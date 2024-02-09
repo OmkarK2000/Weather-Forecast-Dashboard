@@ -2,15 +2,17 @@ import { useState } from "react";
 import { FaCloudMoon } from "react-icons/fa6";
 import TempCard from "./TempCard";
 
-
 const Weather = () => {
-  const [city, setCity] = useState('');
+  const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState();
   const key = "902778c34af9b54a30597c040f155b42";
   const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}`;
 
-
-  const fetchWeatherData = async () => {
+  const fetchWeatherData = async (e) => {
+    e.preventDefault();
+    if(city === ""){
+      return;
+    }
     try {
       const response = await fetch(url);
       const result = await response.json();
@@ -21,17 +23,6 @@ const Weather = () => {
       console.log(err);
     }
   };
-
-  if (weatherData) {
-    // console.log(weatherData)
-    // console.log(weatherData.city)
-    // console.log(weatherData.list[0].dt_txt)
-    // console.log(weatherData.list[7].dt_txt)
-    // console.log(weatherData.list[15].dt_txt)
-    // console.log(weatherData.list[23].dt_txt)
-    // console.log(weatherData.list[31].dt_txt)
-    // console.log(weatherData.list[39].dt_txt)
-  }
 
   const windDirection = (deg) => {
     if (deg >= 0 && deg <= 23) {
@@ -61,11 +52,11 @@ const Weather = () => {
     else if (deg >= 294 && deg <= 336) {
       return "Northwest";
     }
-  }
+  };
 
   const degSym = () => {
     return <i>{'\u00b0'}</i>;
-  }
+  };
 
   return (
     <div className="flex flex-col mt-8">

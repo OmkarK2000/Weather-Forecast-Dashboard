@@ -9,7 +9,7 @@ const TempCard = ({ weatherData }) => {
     <div className="flex  flex-col gap-1 md:gap-4">
       {
         weatherData.list.map((item, index) => (
-          <div key={index} className="flex justify-evenly bg-[#174F9C] mt-2 px-[2px] md:px-2 py-2 text-[18px] list-none mx-2 md:mx-16  ">
+          <div key={index} className="flex justify-evenly list-none bg-[#174F9C] mt-2 px-[2px] md:px-2 py-2 text-[18px] md:text-[21px] mx-2 md:mx-16  ">
             <span>
               <p>{item.dt_txt.slice(10)}</p>
               <p>{item.dt_txt.slice(0, 10)}</p>
