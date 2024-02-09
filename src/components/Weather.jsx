@@ -76,29 +76,26 @@ const Weather = () => {
 
       {weatherData && (
         <>
-          <div className="flex justify-evenly  mt-4">
-            <div className=" p-5">
-              <>
-                <h1 className="text-3xl font-bold">{weatherData.city.name}, {weatherData.city.country}</h1>
+          <div className="flex justify-evenly flex-col md:flex-row mt-4 ">
+            <div className="text-center md:text-left p-5">
+                <h1 className="text-4xl font-bold">{weatherData.city.name}, {weatherData.city.country}</h1>
                 <h4>{weatherData.list[0].dt_txt.slice(0, 10)}</h4>
-                <div className="flex">
+                <div className="flex mt-4 justify-center md:mt-0">
                   <FaCloudMoon size={100} />
                   <div className="px-5">
                     <p className="text-6xl flex">{Math.round(weatherData.list[0].main.temp)}{degSym()}</p>
                     <span className="text-2xl">{(weatherData.list[0].weather[0].description)} </span>
-
                   </div>
                 </div>
-              </>
             </div>
             <span className="bg-gray-400 w-[1px]"></span>
             <div className="flex items-center justify-center">
               <div>
-                <div className="flex gap-10  ">
+                <div className="flex gap-10 text-2xl">
                   <span><span className="flex">{Math.round(weatherData.list[0].main.temp_max)} {degSym()}  </span> Max temp.</span>
                   <span>{(weatherData.list[0].wind.speed)} <br /> Wind speed</span>
                 </div>
-                <div className="flex gap-10  mt-6">
+                <div className="flex gap-10 text-2xl mt-6">
                   <span><span className="flex">{Math.round(weatherData.list[0].main.temp_min)} {degSym()}  </span> Min temp.</span>
                   <span>{windDirection(Math.round(weatherData.list[0].wind.deg))}  <br /> Wind direction. </span>
                 </div>
